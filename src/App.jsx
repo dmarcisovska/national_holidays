@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <h1> test</h1>
+      <h1> Public Holidays App</h1>
       <QueryClientProvider client={queryClient}>
         <Api />
       </QueryClientProvider>
