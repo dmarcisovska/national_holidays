@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import {
   QueryClient,
@@ -10,10 +8,12 @@ import {
 import Api from "./components/Api";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
       <h1> test</h1>
-      <QueryClientProvider client={QueryClient}>
+      <QueryClientProvider client={queryClient}>
         <Api />
       </QueryClientProvider>
     </>
