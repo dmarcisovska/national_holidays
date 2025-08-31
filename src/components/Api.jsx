@@ -10,7 +10,7 @@ export default function Api() {
   const { isPending, error, data } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch("https://api.github.com/repos/TanStack/query").then((res) =>
+      fetch("https://openholidaysapi.org/PublicHolidays?countryIsoCode=NL&languageIsoCode=EN&validFrom=2025-01-01&validTo=2025-12-31").then((res) =>
         res.json()
       ),
   });
@@ -18,14 +18,17 @@ export default function Api() {
   if (isPending) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
+   console.log(data)
 
   return (
     <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong>{" "}
-      <strong>✨ {data.stargazers_count}</strong>{" "}
-      <strong>🍴 {data.forks_count}</strong>
+     <ul>
+        {data?.map(holiday => (
+          <li key={holiday.id}>
+            {holiday.name[0].text} - {holiday.startDate}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
